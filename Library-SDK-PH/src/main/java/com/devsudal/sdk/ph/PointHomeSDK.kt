@@ -18,13 +18,13 @@ object PointHomeSDK {
 
         // AddOn init
         AddOnFactory.initialized(application = application)
-        AddOnFactory.Buzzvil.setUserProfile(
-            BuzzProfile(
-                userId = "asdefq22",
-                gender = BuzzProfile.Gender.MALE,
-                birth = 1979
-            )
-        )
+//        AddOnFactory.Buzzvil.setUserProfile(
+//            BuzzProfile(
+//                userId = "asdefq22",
+//                gender = BuzzProfile.Gender.MALE,
+//                birth = 1979
+//            )
+//        )
 //        AddOnFactory.Buzzvil.load(activity = application.applicationContext as Activity)
     }
 }
