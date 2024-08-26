@@ -57,7 +57,6 @@ class BuzzAddOn : AppCompatActivity() {
 
     fun setUserProfile(
         userId: String,
-//        gender: UserProfile.Gender,
         birthYear: Int,
     ) {
         Log.e(NAME, "$NAME -> setUserProfile")

@@ -13,16 +13,16 @@ internal class BuzzvilStrategy : IBuzzvilStrategyListener {
         const val BUZZVIL_SDK_CLASS_NAME: String = "com.buzzvil.sdk.BuzzvilSdk"
     }
 
-    val buzzvilClass by lazy {
-        Class.forName(ADDON_BUZZVIL_CLASS_NAME)
-    }
+    private var instance: Any? = null
 
 
     override fun initialize(application: Application) {
         kotlin.runCatching {
+            val clazz = Class.forName(ADDON_BUZZVIL_CLASS_NAME)
             Log.e(NAME, "$NAME -> Buzzvil 클래스가 탑재되어 있습니다.")
-            val instance = buzzvilClass.getDeclaredConstructor().newInstance()
-            val initMethod = buzzvilClass.getMethod("init", Application::class.java, AddOnInitListener::class.java)
+
+            instance = clazz.getDeclaredConstructor().newInstance()
+            val initMethod = clazz.getMethod("init", Application::class.java, AddOnInitListener::class.java)
             initMethod.invoke(
                 instance,
                 application,
@@ -66,22 +66,31 @@ internal class BuzzvilStrategy : IBuzzvilStrategyListener {
     }
 
     override fun setUserProfile(profile: BuzzProfile) {
-        val instance = buzzvilClass.getDeclaredConstructor().newInstance()
-        val initMethod = buzzvilClass.getMethod("setUserProfile", String::class.java, Integer::class.java)
-        initMethod.invoke(
-            instance,
-            profile.userId,
-            profile.birth?.let { Integer.valueOf(it) } // birthYear를 Integer로 변환
-        )
+        instance?.let {
+            val method = it::class.java.getMethod(
+                "setUserProfile",
+                String::class.java,
+                Int::class.java
+            )
+            method.invoke(
+                instance,
+                profile.userId,
+                profile.birth
+            )
+        }
     }
 
     override fun loadAD(activity: Activity) {
-        val instance = buzzvilClass.getDeclaredConstructor().newInstance()
-        val initMethod = buzzvilClass.getMethod("loadAD", Activity::class.java)
-        initMethod.invoke(
-            instance,
-            activity
-        )
+        instance?.let {
+            val method = it::class.java.getMethod(
+                "loadAD",
+                Activity::class.java
+            )
+            method.invoke(
+                instance,
+                method
+            )
+        }
     }
 
 }
