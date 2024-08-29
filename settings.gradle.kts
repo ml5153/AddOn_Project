@@ -27,5 +27,6 @@ rootProject.name = "AddOn"
 include(":Presenter-App")
 include(":Library-SDK-PH")
 include("Library-SDK-AddOn:Library-SDK-AddOn-Buzzvil")
+include("Library-SDK-AddOn:Library-SDK-AddOn-LockScreen")
 include(":Library-SDK-AddOn:Library-SDK-AddOn-Factory")
 include(":Library-SDK-AddOn:Library-SDK-AddOn-Support")
