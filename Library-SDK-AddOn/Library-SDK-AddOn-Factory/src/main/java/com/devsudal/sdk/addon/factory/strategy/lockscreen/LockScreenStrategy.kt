@@ -1,24 +1,23 @@
-package com.devsudal.sdk.addon.factory.strategy.notification
+package com.devsudal.sdk.addon.factory.strategy.lockscreen
 
 import android.app.Application
 import android.util.Log
 import com.devsudal.sdk.addon.factory.AddOnFactory
-import com.devsudal.sdk.addon.factory.strategy.IStrategyListener
 import com.devsudal.sdk.addon.support.AddOnInitListener
 import java.lang.reflect.InvocationTargetException
 
-internal class NotificationStrategy : IStrategyListener {
+internal class LockScreenStrategy : ILockScreenStrategyListener {
     companion object {
-        const val NAME: String = "NotificationStrategy"
+        const val NAME: String = "LockScreenStrategy"
     }
 
     override fun initialize(application: Application) {
         kotlin.runCatching {
-            val notificationClass = Class.forName("com.devsudal.sdk.addon.NotificationAddOn")
-            Log.e(AddOnFactory.NAME, "$NAME -> checkAddOn { Notification 클래스가 탑재되어 있습니다. }")
+            val LockScreenClass = Class.forName("com.devsudal.sdk.addon.LockScreenAddOn")
+            Log.e(AddOnFactory.NAME, "$NAME -> checkAddOn { LockScreen 클래스가 탑재되어 있습니다. }")
 
-            val instance = notificationClass.getDeclaredConstructor().newInstance()
-            val initMethod = notificationClass.getMethod("init", Application::class.java, AddOnInitListener::class.java)
+            val instance = LockScreenClass.getDeclaredConstructor().newInstance()
+            val initMethod = LockScreenClass.getMethod("init", Application::class.java, AddOnInitListener::class.java)
             initMethod.invoke(
                 instance,
                 application,

@@ -5,7 +5,7 @@ import android.app.Application
 import android.util.Log
 import com.devsudal.sdk.addon.factory.strategy.buzzvil.BuzzProfile
 import com.devsudal.sdk.addon.factory.strategy.buzzvil.BuzzvilStrategy
-import com.devsudal.sdk.addon.factory.strategy.notification.NotificationStrategy
+import com.devsudal.sdk.addon.factory.strategy.lockscreen.LockScreenStrategy
 
 object AddOnFactory {
 
@@ -15,14 +15,14 @@ object AddOnFactory {
         BuzzvilStrategy()
     }
 
-    private val notificationStrategy by lazy {
-        NotificationStrategy()
+    private val lockscreenStrategy by lazy {
+        LockScreenStrategy()
     }
 
     fun initialized(application: Application) {
         Log.e(NAME, "$NAME -> initialized")
         AddOnFactoryHelper.registerStrategy(buzzvilStrategy)
-        AddOnFactoryHelper.registerStrategy(notificationStrategy)
+        AddOnFactoryHelper.registerStrategy(lockscreenStrategy)
         AddOnFactoryHelper.initializeAll(application = application)
     }
 
@@ -41,8 +41,8 @@ object AddOnFactory {
     }
 
 
-    object Notification {
-        private const val ADDON_NAME = "${NAME}<Notification>"
+    object LockScreen {
+        private const val ADDON_NAME = "${NAME}<LockScreen>"
 
 
     }
