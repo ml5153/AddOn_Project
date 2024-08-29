@@ -6,12 +6,13 @@ import android.util.Log
 import com.devsudal.sdk.addon.connection.AddOnInitListener
 import com.devsudal.sdk.addon.connection.buzzvil.BuzzAddOnConnectListener
 import com.devsudal.sdk.addon.connection.buzzvil.BuzzProfile
+import com.devsudal.sdk.addon.factory.strategy.IStrategyListener
 
-internal class BuzzvilStrategy : IBuzzvilStrategyListener {
+internal class BuzzvilStrategy : IStrategyListener.IBuzzvilStrategyListener {
     companion object {
-        const val NAME: String = "BuzzvilStrategy"
-        const val ADDON_BUZZVIL_CLASS_NAME: String = "com.devsudal.sdk.addon.buzzvil.BuzzAddOn"
-        const val BUZZVIL_SDK_CLASS_NAME: String = "com.buzzvil.sdk.BuzzvilSdk"
+        val NAME: String = BuzzvilStrategy::class.java.simpleName
+        const val ADDON_CLASS_NAME: String = "com.devsudal.sdk.addon.buzzvil.BuzzAddOn"
+        const val SDK_CLASS_NAME: String = "com.buzzvil.sdk.BuzzvilSdk"
     }
 
     private var instance: BuzzAddOnConnectListener? = null
@@ -19,7 +20,7 @@ internal class BuzzvilStrategy : IBuzzvilStrategyListener {
 
     override fun initialize(application: Application) {
         kotlin.runCatching {
-            val clazz = Class.forName(ADDON_BUZZVIL_CLASS_NAME)
+            val clazz = Class.forName(ADDON_CLASS_NAME)
             Log.e(NAME, "$NAME -> Buzzvil 클래스가 탑재되어 있습니다.")
 
 
@@ -39,11 +40,10 @@ internal class BuzzvilStrategy : IBuzzvilStrategyListener {
             )
 
         }.onFailure { e ->
-            e.printStackTrace()
             when (e) {
                 is ClassNotFoundException -> {
                     try {
-                        Class.forName(BUZZVIL_SDK_CLASS_NAME)
+                        Class.forName(SDK_CLASS_NAME)
                         Log.e(NAME, "$NAME -> Buzzvil SDK가 앱사에서 직접 참조하고 있습니다.")
                     } catch (e: Exception) {
                         Log.e(NAME, "$NAME -> Buzzvil SDK가 참조되지 않았습니다.")

@@ -53,7 +53,8 @@ dependencies {
 
     /**
      * 사용 유무를 앱사에서 결정함
-     * 앱사 액션
+     * 앱사 액션 행위
+
       1. AddOn 모듈 참조
        Library-SDK-AddOn:Library-SDK-AddOn-Buzzvil
       2. 직접 참조
@@ -61,9 +62,10 @@ dependencies {
        com.buzzvil:buzzvil-sdk
       3. 참조 x
         SDK 내부에 버즈빌 기능이 자동 OFF 됨
+
      */
     // 1. AddOn 모듈 참조
-    implementation(project(":Library-SDK-AddOn:Library-SDK-AddOn-Buzzvil"))
+//    implementation(project(":Library-SDK-AddOn:Library-SDK-AddOn-Buzzvil"))
     // 2. 직접참조
     api(platform("com.buzzvil:buzzvil-bom:5.17.1"))
     implementation("com.buzzvil:buzzvil-sdk")

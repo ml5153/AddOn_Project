@@ -16,7 +16,7 @@ object PointHomeSDK {
         Log.e(NAME, "$NAME -> initialized")
 
         // AddOn init
-        AddOnFactory.initialized(application = application)
+        AddOnFactory.initialize(application = application)
         AddOnFactory.Buzzvil.setUserProfile(
             BuzzProfile(
                 userId = "asdefq22",

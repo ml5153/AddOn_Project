@@ -5,11 +5,12 @@ import android.util.Log
 import com.devsudal.sdk.addon.connection.AddOnInitListener
 import com.devsudal.sdk.addon.connection.lockscreen.LockScreenAddOnConnectListener
 import com.devsudal.sdk.addon.factory.AddOnFactory
+import com.devsudal.sdk.addon.factory.strategy.IStrategyListener
 
-internal class LockScreenStrategy : ILockScreenStrategyListener {
+internal class LockScreenStrategy : IStrategyListener {
     companion object {
-        const val NAME: String = "LockScreenStrategy"
-        const val ADDON_BUZZVIL_CLASS_NAME: String = "com.devsudal.sdk.addon.LockScreenAddOn"
+        val NAME: String = LockScreenStrategy::class.java.simpleName
+        const val ADDON_CLASS_NAME: String = "com.devsudal.sdk.addon.LockScreenAddOn"
 
     }
 
@@ -17,7 +18,7 @@ internal class LockScreenStrategy : ILockScreenStrategyListener {
 
     override fun initialize(application: Application) {
         kotlin.runCatching {
-            val lockScreenClass = Class.forName(ADDON_BUZZVIL_CLASS_NAME)
+            val lockScreenClass = Class.forName(ADDON_CLASS_NAME)
             Log.e(AddOnFactory.NAME, "$NAME -> checkAddOn { LockScreen 클래스가 탑재되어 있습니다. }")
 
             instance = lockScreenClass.getDeclaredConstructor().newInstance() as LockScreenAddOnConnectListener?
@@ -36,7 +37,6 @@ internal class LockScreenStrategy : ILockScreenStrategyListener {
             )
 
         }.onFailure { e ->
-            e.printStackTrace()
             when (e) {
                 is ClassNotFoundException -> {
                     Log.e(AddOnFactory.NAME, "$NAME -> checkAddOn::onFailure {  클래스를 찾을 수 없습니다. }")
