@@ -1,4 +1,4 @@
-package com.devsudal.sdk.addon.support
+package com.devsudal.sdk.addon.connection
 
 interface AddOnInitListener {
     fun onSuccess()

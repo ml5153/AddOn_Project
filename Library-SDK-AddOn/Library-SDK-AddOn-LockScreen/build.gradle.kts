@@ -34,6 +34,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
 
-    // AddOn-Support
-    implementation(project(":Library-SDK-AddOn:Library-SDK-AddOn-Support"))
+    // AddOn-Connection
+    implementation(project(":Library-SDK-AddOn:Library-SDK-AddOn-Connection"))
 }

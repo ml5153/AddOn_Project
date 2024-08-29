@@ -3,8 +3,9 @@ package com.devsudal.sdk.addon.factory.strategy.buzzvil
 import android.app.Activity
 import android.app.Application
 import android.util.Log
-import com.devsudal.sdk.addon.support.AddOnInitListener
-import java.lang.reflect.InvocationTargetException
+import com.devsudal.sdk.addon.connection.AddOnInitListener
+import com.devsudal.sdk.addon.connection.buzzvil.BuzzAddOnConnectListener
+import com.devsudal.sdk.addon.connection.buzzvil.BuzzProfile
 
 internal class BuzzvilStrategy : IBuzzvilStrategyListener {
     companion object {
@@ -13,7 +14,7 @@ internal class BuzzvilStrategy : IBuzzvilStrategyListener {
         const val BUZZVIL_SDK_CLASS_NAME: String = "com.buzzvil.sdk.BuzzvilSdk"
     }
 
-    private var instance: Any? = null
+    private var instance: BuzzAddOnConnectListener? = null
 
 
     override fun initialize(application: Application) {
@@ -21,12 +22,11 @@ internal class BuzzvilStrategy : IBuzzvilStrategyListener {
             val clazz = Class.forName(ADDON_BUZZVIL_CLASS_NAME)
             Log.e(NAME, "$NAME -> Buzzvil 클래스가 탑재되어 있습니다.")
 
-            instance = clazz.getDeclaredConstructor().newInstance()
-            val initMethod = clazz.getMethod("init", Application::class.java, AddOnInitListener::class.java)
-            initMethod.invoke(
-                instance,
-                application,
-                object : AddOnInitListener {
+
+            instance = (clazz.getDeclaredConstructor().newInstance()) as BuzzAddOnConnectListener
+            instance?.init(
+                application = application,
+                initLitener = object : AddOnInitListener {
                     override fun onSuccess() {
                         Log.e(NAME, "$NAME -> initListener::onSuccess")
                     }
@@ -34,28 +34,20 @@ internal class BuzzvilStrategy : IBuzzvilStrategyListener {
                     override fun onFailure() {
                         Log.e(NAME, "$NAME -> initListener::onFailure")
                     }
+
                 }
             )
+
         }.onFailure { e ->
             e.printStackTrace()
             when (e) {
                 is ClassNotFoundException -> {
-                    Log.e(NAME, "$NAME -> Buzzvil 클래스를 찾을 수 없습니다.")
-
                     try {
                         Class.forName(BUZZVIL_SDK_CLASS_NAME)
-                        Log.e(NAME, "$NAME -> Buzzvil SDK가 직접 참조되고 있습니다.")
+                        Log.e(NAME, "$NAME -> Buzzvil SDK가 앱사에서 직접 참조하고 있습니다.")
                     } catch (e: Exception) {
                         Log.e(NAME, "$NAME -> Buzzvil SDK가 참조되지 않았습니다.")
                     }
-                }
-
-                is NoSuchMethodException -> {
-                    Log.e(NAME, "$NAME -> Buzzvil 메서드를 찾을 수 없습니다.")
-                }
-
-                is InvocationTargetException -> {
-                    Log.e(NAME, "$NAME -> Buzzvil 메서드 호출 중 예외가 발생했습니다: ${e.targetException.message}")
                 }
 
                 else -> {
@@ -66,31 +58,17 @@ internal class BuzzvilStrategy : IBuzzvilStrategyListener {
     }
 
     override fun setUserProfile(profile: BuzzProfile) {
-        instance?.let {
-            val method = it::class.java.getMethod(
-                "setUserProfile",
-                String::class.java,
-                Int::class.java
+        instance?.setUserProfile(
+            BuzzProfile(
+                userId = profile.userId,
+                gender = profile.gender,
+                birth = profile.birth
             )
-            method.invoke(
-                instance,
-                profile.userId,
-                profile.birth
-            )
-        }
+        )
     }
 
     override fun loadAD(activity: Activity) {
-        instance?.let {
-            val method = it::class.java.getMethod(
-                "loadAD",
-                Activity::class.java
-            )
-            method.invoke(
-                instance,
-                method
-            )
-        }
+        instance?.loadAD(activity = activity)
     }
 
 }

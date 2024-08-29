@@ -11,8 +11,9 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Library-SDK-AddOn" />
             <option value="$PROJECT_DIR$/Library-SDK-AddOn/Library-SDK-AddOn-Buzzvil" />
+            <option value="$PROJECT_DIR$/Library-SDK-AddOn/Library-SDK-AddOn-Connection" />
             <option value="$PROJECT_DIR$/Library-SDK-AddOn/Library-SDK-AddOn-Factory" />
-            <option value="$PROJECT_DIR$/Library-SDK-AddOn/Library-SDK-AddOn-Support" />
+            <option value="$PROJECT_DIR$/Library-SDK-AddOn/Library-SDK-AddOn-LockScreen" />
             <option value="$PROJECT_DIR$/Library-SDK-PH" />
             <option value="$PROJECT_DIR$/Presenter-App" />
           </set>

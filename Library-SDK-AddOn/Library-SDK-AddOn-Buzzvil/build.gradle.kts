@@ -38,6 +38,6 @@ dependencies {
     api(platform("com.buzzvil:buzzvil-bom:5.17.1"))
     implementation("com.buzzvil:buzzvil-sdk")
 
-    // AddOn-Support
-    implementation(project(":Library-SDK-AddOn:Library-SDK-AddOn-Support"))
+    // AddOn-Connection
+    implementation(project(":Library-SDK-AddOn:Library-SDK-AddOn-Connection"))
 }

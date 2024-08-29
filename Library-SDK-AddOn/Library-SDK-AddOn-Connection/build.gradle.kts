@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.devsudal.sdk.addon.support"
+    namespace = "com.devsudal.sdk.addon.connection"
     compileSdk = 34
 
     defaultConfig {

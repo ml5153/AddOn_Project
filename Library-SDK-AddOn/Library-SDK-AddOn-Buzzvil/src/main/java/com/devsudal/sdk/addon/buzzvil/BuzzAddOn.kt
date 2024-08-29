@@ -11,22 +11,18 @@ import com.buzzvil.buzzad.benefit.presentation.feed.BuzzAdFeed
 import com.buzzvil.buzzad.benefit.presentation.feed.FeedConfig
 import com.buzzvil.sdk.BuzzvilSdk
 import com.buzzvil.sdk.BuzzvilSetUserProfileListener
-import com.devsudal.sdk.addon.support.AddOnInitListener
-import java.lang.annotation.RetentionPolicy
+import com.devsudal.sdk.addon.connection.AddOnInitListener
+import com.devsudal.sdk.addon.connection.buzzvil.BuzzAddOnConnectListener
+import com.devsudal.sdk.addon.connection.buzzvil.BuzzProfile
 
-
-/**
- *  BuzzAddOn 클래스는 reflection을 통해 사용 됩니다.
- */
-
-class BuzzAddOn : AppCompatActivity() {
+class BuzzAddOn : AppCompatActivity(), BuzzAddOnConnectListener {
 
     companion object {
         const val NAME = "BuzzAddO"
     }
 
 
-    fun init(
+    override fun init(
         application: Application,
         initLitener: AddOnInitListener
     ) {
@@ -55,15 +51,17 @@ class BuzzAddOn : AppCompatActivity() {
         }
     }
 
-    fun setUserProfile(
-        userId: String,
-        birthYear: Int,
-    ) {
-        Log.e(NAME, "$NAME -> setUserProfile")
+    override fun setUserProfile(profile: BuzzProfile) {
+        Log.e(NAME, "$NAME -> setUserProfile { profile: $profile }")
+
         BuzzvilSdk.setUserProfile(
-            userId = userId,
-            gender = UserProfile.Gender.FEMALE,
-            birthYear = birthYear ?: 1987,
+            userId = profile.userId,
+            gender = when (profile.gender) {
+                BuzzProfile.Gender.MALE -> UserProfile.Gender.MALE
+                BuzzProfile.Gender.FEMALE -> UserProfile.Gender.FEMALE
+                else -> UserProfile.Gender.FEMALE
+            },
+            birthYear = profile.birth ?: 1987,
             // (선택) 로그인 상태를 확인할 수 있는 리스너를 등록합니다.
             listener = object : BuzzvilSetUserProfileListener {
                 override fun loggedIn() {
@@ -90,7 +88,7 @@ class BuzzAddOn : AppCompatActivity() {
         )
     }
 
-    fun loadAD(activity: Activity) {
+    override fun loadAD(activity: Activity) {
         Log.e(NAME, "$NAME -> loadAD")
         val buzzAdFeed = BuzzAdFeed.Builder().build()
         buzzAdFeed.load(object : BuzzAdFeed.FeedLoadListener {
@@ -106,7 +104,6 @@ class BuzzAddOn : AppCompatActivity() {
                 buzzAdFeed.show(activity)
             }
         })
-
     }
 }
 
