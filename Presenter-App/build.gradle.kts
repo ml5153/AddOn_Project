@@ -69,5 +69,6 @@ dependencies {
     // 2. 직접참조
     api(platform("com.buzzvil:buzzvil-bom:5.17.1"))
     implementation("com.buzzvil:buzzvil-sdk")
+    implementation(project(":Library-SDK-LOG"))
 
 }

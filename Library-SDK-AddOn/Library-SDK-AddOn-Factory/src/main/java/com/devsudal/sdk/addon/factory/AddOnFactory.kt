@@ -2,11 +2,11 @@ package com.devsudal.sdk.addon.factory
 
 import android.app.Activity
 import android.app.Application
-import android.util.Log
 import com.devsudal.sdk.addon.connection.buzzvil.BuzzProfile
 import com.devsudal.sdk.addon.factory.strategy.IStrategyListener
 import com.devsudal.sdk.addon.factory.strategy.buzzvil.BuzzvilStrategy
 import com.devsudal.sdk.addon.factory.strategy.lockscreen.LockScreenStrategy
+import com.devsudal.sdk.log.LogTracer
 
 object AddOnFactory {
 
@@ -15,7 +15,7 @@ object AddOnFactory {
     private val strategies = mutableMapOf<String, IStrategyListener?>()
 
     fun initialize(application: Application) {
-        Log.i(NAME, "$NAME -> initialize")
+        LogTracer.i { "$NAME -> initialize" }
 
         strategies[BuzzvilStrategy.NAME] = BuzzvilStrategy().apply { initialize(application) }
         strategies[LockScreenStrategy.NAME] = LockScreenStrategy().apply { initialize(application) }
@@ -33,12 +33,12 @@ object AddOnFactory {
         }
 
         fun setUserProfile(profile: BuzzProfile) {
-            Log.i(NAME, "$NAME -> setUserProfile")
+            LogTracer.i { "$NAME -> setUserProfile" }
             strategy.setUserProfile(profile)
         }
 
         fun load(activity: Activity) {
-            Log.i(NAME, "$NAME -> load")
+            LogTracer.i { "$NAME -> load" }
             strategy.loadAD(activity)
         }
     }

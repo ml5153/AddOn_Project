@@ -24,6 +24,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AddOn">
+
+        <meta-data
+            android:name="avatye_log"
+            android:value="true"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true">

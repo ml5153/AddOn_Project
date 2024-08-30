@@ -1,11 +1,10 @@
 package com.devsudal.sdk.addon.lockscreen
 
 import android.app.Application
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-
 import com.devsudal.sdk.addon.connection.AddOnInitListener
 import com.devsudal.sdk.addon.connection.lockscreen.LockScreenAddOnConnectListener
+import com.devsudal.sdk.log.LogTracer
 
 class LockScreenAddOn : AppCompatActivity(), LockScreenAddOnConnectListener {
 
@@ -18,9 +17,7 @@ class LockScreenAddOn : AppCompatActivity(), LockScreenAddOnConnectListener {
         application: Application,
         initLitener: AddOnInitListener
     ) {
-        Log.e(NAME, "$NAME -> init")
-
-
+        LogTracer.i { "$NAME -> init" }
 
         try {
             initLitener.onSuccess()

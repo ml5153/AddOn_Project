@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.devsudal.sdk.ph"
+    namespace = "com.devsudal.sdk.log"
     compileSdk = 34
 
     defaultConfig {
@@ -34,6 +34,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
-    implementation(project(":Library-SDK-AddOn:Library-SDK-AddOn-Factory"))
-    implementation(project(":Library-SDK-LOG"))
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }
