@@ -102,7 +102,7 @@ internal class Logger(private val moduleName: String) {
     }
 
     private fun logLongMessage(tag: String, message: String, logLevel: LEVEL) {
-        val maxLogSize = 1000
+        val maxLogSize = 2000
         val maxParts = 5
         val totalParts = (message.length / maxLogSize).coerceAtMost(maxParts)
 

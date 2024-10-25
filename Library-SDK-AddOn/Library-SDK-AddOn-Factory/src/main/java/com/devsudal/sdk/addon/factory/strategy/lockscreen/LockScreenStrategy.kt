@@ -9,7 +9,7 @@ import com.devsudal.sdk.log.LogTracer
 internal class LockScreenStrategy : IStrategyListener {
     companion object {
         val NAME: String = LockScreenStrategy::class.java.simpleName
-        const val ADDON_CLASS_NAME: String = "com.devsudal.sdk.addon.LockScreenAddOn"
+        const val ADDON_CLASS_NAME: String = "com.devsudal.sdk.addon.lockscreen.LockScreenAddOn"
 
     }
 

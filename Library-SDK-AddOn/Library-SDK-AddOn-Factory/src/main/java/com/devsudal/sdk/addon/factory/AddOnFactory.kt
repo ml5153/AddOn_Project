@@ -17,8 +17,12 @@ object AddOnFactory {
     fun initialize(application: Application) {
         LogTracer.i { "$NAME -> initialize" }
 
-        strategies[BuzzvilStrategy.NAME] = BuzzvilStrategy().apply { initialize(application) }
-        strategies[LockScreenStrategy.NAME] = LockScreenStrategy().apply { initialize(application) }
+        strategies[BuzzvilStrategy.NAME] = BuzzvilStrategy().apply {
+            initialize(application)
+        }
+        strategies[LockScreenStrategy.NAME] = LockScreenStrategy().apply {
+            initialize(application)
+        }
     }
 
     private fun getStrategy(name: String): IStrategyListener? {

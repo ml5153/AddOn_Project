@@ -39,7 +39,7 @@ internal class BuzzvilStrategy : IStrategyListener.IBuzzvilStrategyListener {
     override fun initialize(application: Application) {
         kotlin.runCatching {
             val addonClass = Class.forName(ADDON_CLASS_NAME)
-            LogTracer.i { "$NAME -> Buzzvil 클래스가 탑재되어 있습니다." }
+            LogTracer.i { "$NAME -> { Buzzvil 클래스가 탑재되어 있습니다. }" }
             init(application = application, clazz = addonClass)
 
         }.onFailure { e ->

@@ -61,14 +61,17 @@ dependencies {
        com.buzzvil:buzzvil-bom:5.17.1"
        com.buzzvil:buzzvil-sdk
       3. 참조 x
-        SDK 내부에 버즈빌 기능이 자동 OFF 됨
+        SDK 내부에 버즈빌 애드온 기능이 자동 OFF 됨
 
      */
     // 1. AddOn 모듈 참조
-//    implementation(project(":Library-SDK-AddOn:Library-SDK-AddOn-Buzzvil"))
+    implementation(project(":Library-SDK-AddOn:Library-SDK-AddOn-Buzzvil"))
+    implementation(project(":Library-SDK-AddOn:Library-SDK-AddOn-LockScreen"))
     // 2. 직접참조
     api(platform("com.buzzvil:buzzvil-bom:5.17.1"))
     implementation("com.buzzvil:buzzvil-sdk")
+//    implementation ("com.buzzvil:buzzad-benefit:3.54.+") // BuzzAd v3 SDK 라이브러리
+
     implementation(project(":Library-SDK-LOG"))
 
 }
