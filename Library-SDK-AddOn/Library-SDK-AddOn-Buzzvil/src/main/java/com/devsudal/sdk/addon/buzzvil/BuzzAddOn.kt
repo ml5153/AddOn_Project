@@ -33,7 +33,7 @@ class BuzzAddOn : AppCompatActivity(), BuzzAddOnConnectListener {
             .build()
 
         // BuzzBenefit 설정
-        val buzzAdBenefitConfig = BuzzAdBenefitConfig.Builder("app-pub-166340565595997")
+        val buzzAdBenefitConfig = BuzzAdBenefitConfig.Builder("166340565595997")
             .setDefaultFeedConfig(feedConfig)
             .build()
 

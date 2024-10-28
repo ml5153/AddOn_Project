@@ -1,10 +1,13 @@
 package com.devsudal.sdk.ph
 
+import android.app.Activity
 import android.app.Application
+import android.content.Intent
 import com.devsudal.sdk.addon.connection.buzzvil.BuzzProfile
 import com.devsudal.sdk.addon.factory.AddOnFactory
 import com.devsudal.sdk.log.LogTracer
 import com.devsudal.sdk.log.LoggerSettings
+import com.devsudal.sdk.ph.ui.PointHomeMainActivity
 
 object PointHomeSDK {
 
@@ -20,13 +23,11 @@ object PointHomeSDK {
 
         // AddOn init
         AddOnFactory.initialize(application = application)
-        AddOnFactory.Buzzvil.setUserProfile(
-            BuzzProfile(
-                userId = "asdefq22",
-                gender = BuzzProfile.Gender.MALE,
-                birth = 1979
-            )
-        )
-//        AddOnFactory.Buzzvil.load(activity = application.applicationContext as Activity)
+    }
+
+
+    fun open(activity:Activity) {
+        val intent:Intent = Intent(activity, PointHomeMainActivity::class.java)
+        activity.startActivity(intent)
     }
 }
