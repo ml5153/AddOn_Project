@@ -3,12 +3,12 @@ package com.devsudal.sdk.addon.factory.strategy.lockscreen
 import android.app.Application
 import com.devsudal.sdk.addon.connection.AddOnInitListener
 import com.devsudal.sdk.addon.connection.lockscreen.LockScreenAddOnConnectListener
-import com.devsudal.sdk.addon.factory.strategy.IStrategyListener
+import com.devsudal.sdk.addon.factory.strategy.IBaseStrategyListener
 import com.devsudal.sdk.log.LogTracer
 
-internal class LockScreenStrategy : IStrategyListener {
+internal class LockScreenBaseStrategy : IBaseStrategyListener {
     companion object {
-        val NAME: String = LockScreenStrategy::class.java.simpleName
+        val NAME: String = LockScreenBaseStrategy::class.java.simpleName
         const val ADDON_CLASS_NAME: String = "com.devsudal.sdk.addon.lockscreen.LockScreenAddOn"
 
     }
