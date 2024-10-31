@@ -2,11 +2,11 @@ package com.devsudal.sdk.addon.factory
 
 import android.app.Activity
 import android.app.Application
+import com.decaffeine.common.sdk.log.LogTracer
 import com.devsudal.sdk.addon.connection.buzzvil.BuzzProfile
 import com.devsudal.sdk.addon.factory.strategy.IBaseStrategyListener
-import com.devsudal.sdk.addon.factory.strategy.buzzvil.BuzzvilBaseStrategy
-import com.devsudal.sdk.addon.factory.strategy.lockscreen.LockScreenBaseStrategy
-import com.devsudal.sdk.log.LogTracer
+import com.devsudal.sdk.addon.factory.strategy.buzzvil.BuzzvilStrategy
+import com.devsudal.sdk.addon.factory.strategy.lockscreen.LockScreenStrategy
 
 object AddOnFactory {
 
@@ -17,11 +17,10 @@ object AddOnFactory {
     fun initialize(application: Application) {
         LogTracer.i { "$NAME -> initialize" }
 
-        /** 초기화 */
-        strategies[BuzzvilBaseStrategy.NAME] = BuzzvilBaseStrategy().apply {
+        strategies[BuzzvilStrategy.NAME] = BuzzvilStrategy().apply {
             initialize(application)
         }
-        strategies[LockScreenBaseStrategy.NAME] = LockScreenBaseStrategy().apply {
+        strategies[LockScreenStrategy.NAME] = LockScreenStrategy().apply {
             initialize(application)
         }
     }
@@ -33,7 +32,7 @@ object AddOnFactory {
 
     object Buzzvil {
         private val strategy by lazy {
-            getStrategy(BuzzvilBaseStrategy.NAME) as? BuzzvilBaseStrategy
+            getStrategy(BuzzvilStrategy.NAME) as? BuzzvilStrategy
                 ?: throw Exception("strategy not initialized")
         }
 
@@ -50,7 +49,7 @@ object AddOnFactory {
 
     object LockScreen {
         private val strategy by lazy {
-            getStrategy(LockScreenBaseStrategy.NAME) as? LockScreenBaseStrategy
+            getStrategy(LockScreenStrategy.NAME) as? LockScreenStrategy
                 ?: throw Exception("strategy not initialized")
         }
     }

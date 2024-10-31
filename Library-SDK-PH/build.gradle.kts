@@ -38,5 +38,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
     implementation(project(":Library-SDK-AddOn:Library-SDK-AddOn-Factory"))
-    implementation(project(":Library-SDK-LOG"))
+    // External
+    implementation(libs.external.decaffeine)
 }

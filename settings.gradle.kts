@@ -20,6 +20,8 @@ dependencyResolutionManagement {
         // buzzvil
         maven("https://dl.buzzvil.com/public/maven")
 
+        // Decafeine
+        maven ("https://dl.cloudsmith.io/public/avatye/android-decaffeine-common/maven/")
     }
 }
 
@@ -30,4 +32,3 @@ include("Library-SDK-AddOn:Library-SDK-AddOn-Buzzvil")
 include("Library-SDK-AddOn:Library-SDK-AddOn-LockScreen")
 include(":Library-SDK-AddOn:Library-SDK-AddOn-Factory")
 include(":Library-SDK-AddOn:Library-SDK-AddOn-Connection")
-include(":Library-SDK-LOG")

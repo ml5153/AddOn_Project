@@ -2,9 +2,9 @@ package com.devsudal.sdk.addon.lockscreen
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
+import com.decaffeine.common.sdk.log.LogTracer
 import com.devsudal.sdk.addon.connection.AddOnInitListener
 import com.devsudal.sdk.addon.connection.lockscreen.LockScreenAddOnConnectListener
-import com.devsudal.sdk.log.LogTracer
 
 class LockScreenAddOn : AppCompatActivity(), LockScreenAddOnConnectListener {
 

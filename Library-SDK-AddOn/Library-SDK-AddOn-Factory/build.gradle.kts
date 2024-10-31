@@ -37,6 +37,7 @@ dependencies {
 
     // AddOn-Connection
     api(project(":Library-SDK-AddOn:Library-SDK-AddOn-Connection"))
-    implementation(project(":Library-SDK-LOG"))
+    // External
+    implementation(libs.external.decaffeine)
 
 }

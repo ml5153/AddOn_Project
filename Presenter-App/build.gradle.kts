@@ -73,8 +73,13 @@ dependencies {
     // 2. 직접참조
     api(platform("com.buzzvil:buzzvil-bom:5.17.1"))
     implementation("com.buzzvil:buzzvil-sdk")
-//    implementation ("com.buzzvil:buzzad-benefit:3.54.+") // BuzzAd v3 SDK 라이브러리
+//    implementation ("com.buzzvil:buzzad-benefit:3.54.+") {// BuzzAd v3 SDK 라이브러리
+//        version {
+//            strictly("3.54.1")
+//        }
+//    }
 
-    implementation(project(":Library-SDK-LOG"))
+    // External
+    implementation(libs.external.decaffeine)
 
 }

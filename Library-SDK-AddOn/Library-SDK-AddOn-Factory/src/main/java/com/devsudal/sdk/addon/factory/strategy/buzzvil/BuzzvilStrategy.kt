@@ -2,15 +2,15 @@ package com.devsudal.sdk.addon.factory.strategy.buzzvil
 
 import android.app.Activity
 import android.app.Application
+import com.decaffeine.common.sdk.log.LogTracer
 import com.devsudal.sdk.addon.connection.AddOnInitListener
 import com.devsudal.sdk.addon.connection.buzzvil.BuzzAddOnConnectListener
 import com.devsudal.sdk.addon.connection.buzzvil.BuzzProfile
 import com.devsudal.sdk.addon.factory.strategy.IBaseStrategyListener
-import com.devsudal.sdk.log.LogTracer
 
-internal class BuzzvilBaseStrategy : IBaseStrategyListener {
+internal class BuzzvilStrategy : IBaseStrategyListener {
     companion object {
-        val NAME: String = BuzzvilBaseStrategy::class.java.simpleName
+        val NAME: String = BuzzvilStrategy::class.java.simpleName
         const val ADDON_CLASS_NAME: String = "com.devsudal.sdk.addon.buzzvil.BuzzAddOn"
         const val SDK_CLASS_NAME: String = "com.buzzvil.sdk.BuzzvilSdk"
     }

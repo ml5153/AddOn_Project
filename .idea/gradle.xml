@@ -14,7 +14,6 @@
             <option value="$PROJECT_DIR$/Library-SDK-AddOn/Library-SDK-AddOn-Connection" />
             <option value="$PROJECT_DIR$/Library-SDK-AddOn/Library-SDK-AddOn-Factory" />
             <option value="$PROJECT_DIR$/Library-SDK-AddOn/Library-SDK-AddOn-LockScreen" />
-            <option value="$PROJECT_DIR$/Library-SDK-LOG" />
             <option value="$PROJECT_DIR$/Library-SDK-PH" />
             <option value="$PROJECT_DIR$/Presenter-App" />
           </set>

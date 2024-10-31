@@ -3,10 +3,8 @@ package com.devsudal.sdk.ph
 import android.app.Activity
 import android.app.Application
 import android.content.Intent
-import com.devsudal.sdk.addon.connection.buzzvil.BuzzProfile
+import com.decaffeine.common.sdk.log.LogTracer
 import com.devsudal.sdk.addon.factory.AddOnFactory
-import com.devsudal.sdk.log.LogTracer
-import com.devsudal.sdk.log.LoggerSettings
 import com.devsudal.sdk.ph.ui.PointHomeMainActivity
 
 object PointHomeSDK {
@@ -17,8 +15,6 @@ object PointHomeSDK {
      * 초기화
      */
     fun initialized(application: Application) {
-        LoggerSettings.retrieveLog(application = application)
-
         LogTracer.i { "$NAME -> initialized" }
 
         // AddOn init

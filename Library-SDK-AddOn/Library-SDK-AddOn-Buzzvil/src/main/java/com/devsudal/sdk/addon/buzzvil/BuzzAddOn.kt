@@ -10,10 +10,10 @@ import com.buzzvil.buzzad.benefit.presentation.feed.BuzzAdFeed
 import com.buzzvil.buzzad.benefit.presentation.feed.FeedConfig
 import com.buzzvil.sdk.BuzzvilSdk
 import com.buzzvil.sdk.BuzzvilSetUserProfileListener
+import com.decaffeine.common.sdk.log.LogTracer
 import com.devsudal.sdk.addon.connection.AddOnInitListener
 import com.devsudal.sdk.addon.connection.buzzvil.BuzzAddOnConnectListener
 import com.devsudal.sdk.addon.connection.buzzvil.BuzzProfile
-import com.devsudal.sdk.log.LogTracer
 
 class BuzzAddOn : AppCompatActivity(), BuzzAddOnConnectListener {
 
